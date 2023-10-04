@@ -3,15 +3,8 @@ namespace Video_Tools
 {
     partial class frmVideoTools
     {
-        /// <summary>
-        /// Variable nécessaire au concepteur.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Nettoyage des ressources utilisées.
-        /// </summary>
-        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -21,12 +14,8 @@ namespace Video_Tools
             base.Dispose(disposing);
         }
 
-        #region Code généré par le Concepteur Windows Form
+        #region Generated Code
 
-        /// <summary>
-        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
-        /// le contenu de cette méthode avec l'éditeur de code.
-        /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
@@ -66,6 +55,13 @@ namespace Video_Tools
             this.btnCompressInputFolder = new System.Windows.Forms.Button();
             this.btnCompressInputFiles = new System.Windows.Forms.Button();
             this.tblCompressOptions = new System.Windows.Forms.TableLayoutPanel();
+            this.gbCompressCompression = new System.Windows.Forms.GroupBox();
+            this.txtCompressCustomCrf = new System.Windows.Forms.NumericUpDown();
+            this.rbtnCompressMax = new System.Windows.Forms.RadioButton();
+            this.rbtnCompressCustomCrf = new System.Windows.Forms.RadioButton();
+            this.rbtnCompressHigh = new System.Windows.Forms.RadioButton();
+            this.rbtnCompressNormal = new System.Windows.Forms.RadioButton();
+            this.rbtnCompressLossless = new System.Windows.Forms.RadioButton();
             this.gbCompressSpeed = new System.Windows.Forms.GroupBox();
             this.rbtnCompressVerySlow = new System.Windows.Forms.RadioButton();
             this.rbtnCompressSlower = new System.Windows.Forms.RadioButton();
@@ -76,6 +72,13 @@ namespace Video_Tools
             this.rbtnCompressSuperFast = new System.Windows.Forms.RadioButton();
             this.rbtnCompressUltraFast = new System.Windows.Forms.RadioButton();
             this.gbCompressResolution = new System.Windows.Forms.GroupBox();
+            this.txtCompressCustomRes = new System.Windows.Forms.NumericUpDown();
+            this.rbtnCompress4K = new System.Windows.Forms.RadioButton();
+            this.rbtnCompressCustomRes = new System.Windows.Forms.RadioButton();
+            this.rbtnCompress2K = new System.Windows.Forms.RadioButton();
+            this.rbtnCompress1080 = new System.Windows.Forms.RadioButton();
+            this.rbtnCompress720 = new System.Windows.Forms.RadioButton();
+            this.rbtnCompress360 = new System.Windows.Forms.RadioButton();
             this.tblCompress = new System.Windows.Forms.TableLayoutPanel();
             this.btnCompress = new System.Windows.Forms.Button();
             this.tblCompressCompletionStatus = new System.Windows.Forms.TableLayoutPanel();
@@ -91,6 +94,7 @@ namespace Video_Tools
             this.chkCompressModeVideo = new System.Windows.Forms.RadioButton();
             this.btnCompressResetSettings = new System.Windows.Forms.Button();
             this.gbCompressOther = new System.Windows.Forms.GroupBox();
+            this.chkCompressChangeRes = new System.Windows.Forms.CheckBox();
             this.chkCompressGenerateReport = new System.Windows.Forms.CheckBox();
             this.chkCompressRevertBigger = new System.Windows.Forms.CheckBox();
             this.chkCompressOutputTree = new System.Windows.Forms.CheckBox();
@@ -100,21 +104,6 @@ namespace Video_Tools
             this.chkCompressSubFolders = new System.Windows.Forms.CheckBox();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.gbCompressCompression = new System.Windows.Forms.GroupBox();
-            this.txtCompressCustomCrf = new System.Windows.Forms.NumericUpDown();
-            this.rbtnCompressMax = new System.Windows.Forms.RadioButton();
-            this.rbtnCompressCustomCrf = new System.Windows.Forms.RadioButton();
-            this.rbtnCompressHigh = new System.Windows.Forms.RadioButton();
-            this.rbtnCompressNormal = new System.Windows.Forms.RadioButton();
-            this.rbtnCompressLossless = new System.Windows.Forms.RadioButton();
-            this.rbtnCompress360 = new System.Windows.Forms.RadioButton();
-            this.rbtnCompress720 = new System.Windows.Forms.RadioButton();
-            this.rbtnCompress1080 = new System.Windows.Forms.RadioButton();
-            this.rbtnCompress2K = new System.Windows.Forms.RadioButton();
-            this.rbtnCompress4K = new System.Windows.Forms.RadioButton();
-            this.txtCompressCustomRes = new System.Windows.Forms.NumericUpDown();
-            this.rbtnCompressCustomRes = new System.Windows.Forms.RadioButton();
-            this.chkCompressChangeRes = new System.Windows.Forms.CheckBox();
             this.tabs.SuspendLayout();
             this.tabPlay.SuspendLayout();
             this.tblPlayMain.SuspendLayout();
@@ -126,16 +115,16 @@ namespace Video_Tools
             this.tblCompressMain.SuspendLayout();
             this.tblCompressInputsOutputs.SuspendLayout();
             this.tblCompressOptions.SuspendLayout();
+            this.gbCompressCompression.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCompressCustomCrf)).BeginInit();
             this.gbCompressSpeed.SuspendLayout();
             this.gbCompressResolution.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCompressCustomRes)).BeginInit();
             this.tblCompress.SuspendLayout();
             this.tblCompressCompletionStatus.SuspendLayout();
             this.tblCompressOther.SuspendLayout();
             this.gbCompressMode.SuspendLayout();
             this.gbCompressOther.SuspendLayout();
-            this.gbCompressCompression.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCompressCustomCrf)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCompressCustomRes)).BeginInit();
             this.SuspendLayout();
             // 
             // tabs
@@ -636,6 +625,97 @@ namespace Video_Tools
             this.tblCompressOptions.Size = new System.Drawing.Size(1250, 100);
             this.tblCompressOptions.TabIndex = 9;
             // 
+            // gbCompressCompression
+            // 
+            this.gbCompressCompression.Controls.Add(this.txtCompressCustomCrf);
+            this.gbCompressCompression.Controls.Add(this.rbtnCompressMax);
+            this.gbCompressCompression.Controls.Add(this.rbtnCompressCustomCrf);
+            this.gbCompressCompression.Controls.Add(this.rbtnCompressHigh);
+            this.gbCompressCompression.Controls.Add(this.rbtnCompressNormal);
+            this.gbCompressCompression.Controls.Add(this.rbtnCompressLossless);
+            this.gbCompressCompression.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbCompressCompression.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gbCompressCompression.Location = new System.Drawing.Point(553, 3);
+            this.gbCompressCompression.Name = "gbCompressCompression";
+            this.gbCompressCompression.Size = new System.Drawing.Size(381, 94);
+            this.gbCompressCompression.TabIndex = 2;
+            this.gbCompressCompression.TabStop = false;
+            this.gbCompressCompression.Text = "Compression";
+            // 
+            // txtCompressCustomCrf
+            // 
+            this.txtCompressCustomCrf.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.txtCompressCustomCrf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCompressCustomCrf.Enabled = false;
+            this.txtCompressCustomCrf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtCompressCustomCrf.Location = new System.Drawing.Point(172, 59);
+            this.txtCompressCustomCrf.Maximum = new decimal(new int[] {
+            51,
+            0,
+            0,
+            0});
+            this.txtCompressCustomCrf.Name = "txtCompressCustomCrf";
+            this.txtCompressCustomCrf.Size = new System.Drawing.Size(74, 26);
+            this.txtCompressCustomCrf.TabIndex = 14;
+            this.txtCompressCustomCrf.ValueChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
+            // 
+            // rbtnCompressMax
+            // 
+            this.rbtnCompressMax.AutoSize = true;
+            this.rbtnCompressMax.Location = new System.Drawing.Point(318, 25);
+            this.rbtnCompressMax.Name = "rbtnCompressMax";
+            this.rbtnCompressMax.Size = new System.Drawing.Size(54, 23);
+            this.rbtnCompressMax.TabIndex = 13;
+            this.rbtnCompressMax.Text = "Max";
+            this.rbtnCompressMax.UseVisualStyleBackColor = true;
+            this.rbtnCompressMax.CheckedChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
+            // 
+            // rbtnCompressCustomCrf
+            // 
+            this.rbtnCompressCustomCrf.AutoSize = true;
+            this.rbtnCompressCustomCrf.Location = new System.Drawing.Point(15, 59);
+            this.rbtnCompressCustomCrf.Name = "rbtnCompressCustomCrf";
+            this.rbtnCompressCustomCrf.Size = new System.Drawing.Size(162, 23);
+            this.rbtnCompressCustomCrf.TabIndex = 10;
+            this.rbtnCompressCustomCrf.Text = "Custom (0-51): ";
+            this.rbtnCompressCustomCrf.UseVisualStyleBackColor = true;
+            this.rbtnCompressCustomCrf.CheckedChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
+            // 
+            // rbtnCompressHigh
+            // 
+            this.rbtnCompressHigh.AutoSize = true;
+            this.rbtnCompressHigh.Location = new System.Drawing.Point(235, 25);
+            this.rbtnCompressHigh.Name = "rbtnCompressHigh";
+            this.rbtnCompressHigh.Size = new System.Drawing.Size(63, 23);
+            this.rbtnCompressHigh.TabIndex = 9;
+            this.rbtnCompressHigh.Text = "High";
+            this.rbtnCompressHigh.UseVisualStyleBackColor = true;
+            this.rbtnCompressHigh.CheckedChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
+            // 
+            // rbtnCompressNormal
+            // 
+            this.rbtnCompressNormal.AutoSize = true;
+            this.rbtnCompressNormal.Checked = true;
+            this.rbtnCompressNormal.Location = new System.Drawing.Point(134, 25);
+            this.rbtnCompressNormal.Name = "rbtnCompressNormal";
+            this.rbtnCompressNormal.Size = new System.Drawing.Size(81, 23);
+            this.rbtnCompressNormal.TabIndex = 8;
+            this.rbtnCompressNormal.TabStop = true;
+            this.rbtnCompressNormal.Text = "Normal";
+            this.rbtnCompressNormal.UseVisualStyleBackColor = true;
+            this.rbtnCompressNormal.CheckedChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
+            // 
+            // rbtnCompressLossless
+            // 
+            this.rbtnCompressLossless.AutoSize = true;
+            this.rbtnCompressLossless.Location = new System.Drawing.Point(15, 25);
+            this.rbtnCompressLossless.Name = "rbtnCompressLossless";
+            this.rbtnCompressLossless.Size = new System.Drawing.Size(99, 23);
+            this.rbtnCompressLossless.TabIndex = 7;
+            this.rbtnCompressLossless.Text = "Lossless";
+            this.rbtnCompressLossless.UseVisualStyleBackColor = true;
+            this.rbtnCompressLossless.CheckedChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
+            // 
             // gbCompressSpeed
             // 
             this.gbCompressSpeed.Controls.Add(this.rbtnCompressVerySlow);
@@ -765,6 +845,101 @@ namespace Video_Tools
             this.gbCompressResolution.TabStop = false;
             this.gbCompressResolution.Text = "Resolution";
             // 
+            // txtCompressCustomRes
+            // 
+            this.txtCompressCustomRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.txtCompressCustomRes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCompressCustomRes.Enabled = false;
+            this.txtCompressCustomRes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtCompressCustomRes.Location = new System.Drawing.Point(184, 59);
+            this.txtCompressCustomRes.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.txtCompressCustomRes.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.txtCompressCustomRes.Name = "txtCompressCustomRes";
+            this.txtCompressCustomRes.Size = new System.Drawing.Size(100, 26);
+            this.txtCompressCustomRes.TabIndex = 16;
+            this.txtCompressCustomRes.Value = new decimal(new int[] {
+            360,
+            0,
+            0,
+            0});
+            this.txtCompressCustomRes.ValueChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
+            // 
+            // rbtnCompress4K
+            // 
+            this.rbtnCompress4K.AutoSize = true;
+            this.rbtnCompress4K.Location = new System.Drawing.Point(15, 59);
+            this.rbtnCompress4K.Name = "rbtnCompress4K";
+            this.rbtnCompress4K.Size = new System.Drawing.Size(45, 23);
+            this.rbtnCompress4K.TabIndex = 18;
+            this.rbtnCompress4K.Text = "4K";
+            this.rbtnCompress4K.UseVisualStyleBackColor = true;
+            this.rbtnCompress4K.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
+            // 
+            // rbtnCompressCustomRes
+            // 
+            this.rbtnCompressCustomRes.AutoSize = true;
+            this.rbtnCompressCustomRes.Location = new System.Drawing.Point(89, 59);
+            this.rbtnCompressCustomRes.Name = "rbtnCompressCustomRes";
+            this.rbtnCompressCustomRes.Size = new System.Drawing.Size(99, 23);
+            this.rbtnCompressCustomRes.TabIndex = 15;
+            this.rbtnCompressCustomRes.Text = "Custom: ";
+            this.rbtnCompressCustomRes.UseVisualStyleBackColor = true;
+            this.rbtnCompressCustomRes.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
+            // 
+            // rbtnCompress2K
+            // 
+            this.rbtnCompress2K.AutoSize = true;
+            this.rbtnCompress2K.Location = new System.Drawing.Point(246, 25);
+            this.rbtnCompress2K.Name = "rbtnCompress2K";
+            this.rbtnCompress2K.Size = new System.Drawing.Size(45, 23);
+            this.rbtnCompress2K.TabIndex = 17;
+            this.rbtnCompress2K.Text = "2K";
+            this.rbtnCompress2K.UseVisualStyleBackColor = true;
+            this.rbtnCompress2K.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
+            // 
+            // rbtnCompress1080
+            // 
+            this.rbtnCompress1080.AutoSize = true;
+            this.rbtnCompress1080.Checked = true;
+            this.rbtnCompress1080.Location = new System.Drawing.Point(163, 25);
+            this.rbtnCompress1080.Name = "rbtnCompress1080";
+            this.rbtnCompress1080.Size = new System.Drawing.Size(63, 23);
+            this.rbtnCompress1080.TabIndex = 16;
+            this.rbtnCompress1080.TabStop = true;
+            this.rbtnCompress1080.Text = "1080";
+            this.rbtnCompress1080.UseVisualStyleBackColor = true;
+            this.rbtnCompress1080.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
+            // 
+            // rbtnCompress720
+            // 
+            this.rbtnCompress720.AutoSize = true;
+            this.rbtnCompress720.Location = new System.Drawing.Point(89, 25);
+            this.rbtnCompress720.Name = "rbtnCompress720";
+            this.rbtnCompress720.Size = new System.Drawing.Size(54, 23);
+            this.rbtnCompress720.TabIndex = 15;
+            this.rbtnCompress720.Text = "720";
+            this.rbtnCompress720.UseVisualStyleBackColor = true;
+            this.rbtnCompress720.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
+            // 
+            // rbtnCompress360
+            // 
+            this.rbtnCompress360.AutoSize = true;
+            this.rbtnCompress360.Location = new System.Drawing.Point(15, 25);
+            this.rbtnCompress360.Name = "rbtnCompress360";
+            this.rbtnCompress360.Size = new System.Drawing.Size(54, 23);
+            this.rbtnCompress360.TabIndex = 14;
+            this.rbtnCompress360.Text = "360";
+            this.rbtnCompress360.UseVisualStyleBackColor = true;
+            this.rbtnCompress360.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
+            // 
             // tblCompress
             // 
             this.tblCompress.ColumnCount = 2;
@@ -800,7 +975,7 @@ namespace Video_Tools
             this.tblCompressCompletionStatus.ColumnCount = 3;
             this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 88F));
+            this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tblCompressCompletionStatus.Controls.Add(this.lblCompressProgressTimer, 1, 0);
             this.tblCompressCompletionStatus.Controls.Add(this.lblCompressNbFiles, 0, 0);
             this.tblCompressCompletionStatus.Controls.Add(this.progressBar, 0, 1);
@@ -818,7 +993,7 @@ namespace Video_Tools
             // 
             this.lblCompressProgressTimer.AutoSize = true;
             this.lblCompressProgressTimer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCompressProgressTimer.Location = new System.Drawing.Point(721, 1);
+            this.lblCompressProgressTimer.Location = new System.Drawing.Point(718, 1);
             this.lblCompressProgressTimer.Name = "lblCompressProgressTimer";
             this.lblCompressProgressTimer.Size = new System.Drawing.Size(124, 34);
             this.lblCompressProgressTimer.TabIndex = 3;
@@ -831,7 +1006,7 @@ namespace Video_Tools
             this.lblCompressNbFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCompressNbFiles.Location = new System.Drawing.Point(4, 1);
             this.lblCompressNbFiles.Name = "lblCompressNbFiles";
-            this.lblCompressNbFiles.Size = new System.Drawing.Size(710, 34);
+            this.lblCompressNbFiles.Size = new System.Drawing.Size(707, 34);
             this.lblCompressNbFiles.TabIndex = 0;
             this.lblCompressNbFiles.Text = "0 / 0 files";
             this.lblCompressNbFiles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -852,9 +1027,9 @@ namespace Video_Tools
             // 
             this.lblCompressPercentFiles.AutoSize = true;
             this.lblCompressPercentFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCompressPercentFiles.Location = new System.Drawing.Point(852, 1);
+            this.lblCompressPercentFiles.Location = new System.Drawing.Point(849, 1);
             this.lblCompressPercentFiles.Name = "lblCompressPercentFiles";
-            this.lblCompressPercentFiles.Size = new System.Drawing.Size(82, 34);
+            this.lblCompressPercentFiles.Size = new System.Drawing.Size(85, 34);
             this.lblCompressPercentFiles.TabIndex = 1;
             this.lblCompressPercentFiles.Text = "0 %";
             this.lblCompressPercentFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -972,6 +1147,21 @@ namespace Video_Tools
             this.gbCompressOther.TabStop = false;
             this.gbCompressOther.Text = "Other";
             // 
+            // chkCompressChangeRes
+            // 
+            this.chkCompressChangeRes.AutoSize = true;
+            this.chkCompressChangeRes.Checked = true;
+            this.chkCompressChangeRes.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCompressChangeRes.Location = new System.Drawing.Point(549, 25);
+            this.chkCompressChangeRes.Margin = new System.Windows.Forms.Padding(10);
+            this.chkCompressChangeRes.Name = "chkCompressChangeRes";
+            this.chkCompressChangeRes.Size = new System.Drawing.Size(181, 23);
+            this.chkCompressChangeRes.TabIndex = 14;
+            this.chkCompressChangeRes.Text = "Change Resolution";
+            this.toolTip.SetToolTip(this.chkCompressChangeRes, "Scales the video to the selected resolution");
+            this.chkCompressChangeRes.UseVisualStyleBackColor = true;
+            this.chkCompressChangeRes.CheckedChanged += new System.EventHandler(this.chkCompressChangeRes_CheckedChanged);
+            // 
             // chkCompressGenerateReport
             // 
             this.chkCompressGenerateReport.AutoSize = true;
@@ -1080,207 +1270,6 @@ namespace Video_Tools
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // gbCompressCompression
-            // 
-            this.gbCompressCompression.Controls.Add(this.txtCompressCustomCrf);
-            this.gbCompressCompression.Controls.Add(this.rbtnCompressMax);
-            this.gbCompressCompression.Controls.Add(this.rbtnCompressCustomCrf);
-            this.gbCompressCompression.Controls.Add(this.rbtnCompressHigh);
-            this.gbCompressCompression.Controls.Add(this.rbtnCompressNormal);
-            this.gbCompressCompression.Controls.Add(this.rbtnCompressLossless);
-            this.gbCompressCompression.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbCompressCompression.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbCompressCompression.Location = new System.Drawing.Point(553, 3);
-            this.gbCompressCompression.Name = "gbCompressCompression";
-            this.gbCompressCompression.Size = new System.Drawing.Size(381, 94);
-            this.gbCompressCompression.TabIndex = 2;
-            this.gbCompressCompression.TabStop = false;
-            this.gbCompressCompression.Text = "Compression";
-            // 
-            // txtCompressCustomCrf
-            // 
-            this.txtCompressCustomCrf.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.txtCompressCustomCrf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCompressCustomCrf.Enabled = false;
-            this.txtCompressCustomCrf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtCompressCustomCrf.Location = new System.Drawing.Point(172, 59);
-            this.txtCompressCustomCrf.Maximum = new decimal(new int[] {
-            51,
-            0,
-            0,
-            0});
-            this.txtCompressCustomCrf.Name = "txtCompressCustomCrf";
-            this.txtCompressCustomCrf.Size = new System.Drawing.Size(74, 26);
-            this.txtCompressCustomCrf.TabIndex = 14;
-            this.txtCompressCustomCrf.ValueChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
-            // 
-            // rbtnCompressMax
-            // 
-            this.rbtnCompressMax.AutoSize = true;
-            this.rbtnCompressMax.Location = new System.Drawing.Point(318, 25);
-            this.rbtnCompressMax.Name = "rbtnCompressMax";
-            this.rbtnCompressMax.Size = new System.Drawing.Size(54, 23);
-            this.rbtnCompressMax.TabIndex = 13;
-            this.rbtnCompressMax.Text = "Max";
-            this.rbtnCompressMax.UseVisualStyleBackColor = true;
-            this.rbtnCompressMax.CheckedChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
-            // 
-            // rbtnCompressCustomCrf
-            // 
-            this.rbtnCompressCustomCrf.AutoSize = true;
-            this.rbtnCompressCustomCrf.Location = new System.Drawing.Point(15, 59);
-            this.rbtnCompressCustomCrf.Name = "rbtnCompressCustomCrf";
-            this.rbtnCompressCustomCrf.Size = new System.Drawing.Size(162, 23);
-            this.rbtnCompressCustomCrf.TabIndex = 10;
-            this.rbtnCompressCustomCrf.Text = "Custom (0-51): ";
-            this.rbtnCompressCustomCrf.UseVisualStyleBackColor = true;
-            this.rbtnCompressCustomCrf.CheckedChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
-            // 
-            // rbtnCompressHigh
-            // 
-            this.rbtnCompressHigh.AutoSize = true;
-            this.rbtnCompressHigh.Location = new System.Drawing.Point(235, 25);
-            this.rbtnCompressHigh.Name = "rbtnCompressHigh";
-            this.rbtnCompressHigh.Size = new System.Drawing.Size(63, 23);
-            this.rbtnCompressHigh.TabIndex = 9;
-            this.rbtnCompressHigh.Text = "High";
-            this.rbtnCompressHigh.UseVisualStyleBackColor = true;
-            this.rbtnCompressHigh.CheckedChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
-            // 
-            // rbtnCompressNormal
-            // 
-            this.rbtnCompressNormal.AutoSize = true;
-            this.rbtnCompressNormal.Checked = true;
-            this.rbtnCompressNormal.Location = new System.Drawing.Point(134, 25);
-            this.rbtnCompressNormal.Name = "rbtnCompressNormal";
-            this.rbtnCompressNormal.Size = new System.Drawing.Size(81, 23);
-            this.rbtnCompressNormal.TabIndex = 8;
-            this.rbtnCompressNormal.TabStop = true;
-            this.rbtnCompressNormal.Text = "Normal";
-            this.rbtnCompressNormal.UseVisualStyleBackColor = true;
-            this.rbtnCompressNormal.CheckedChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
-            // 
-            // rbtnCompressLossless
-            // 
-            this.rbtnCompressLossless.AutoSize = true;
-            this.rbtnCompressLossless.Location = new System.Drawing.Point(15, 25);
-            this.rbtnCompressLossless.Name = "rbtnCompressLossless";
-            this.rbtnCompressLossless.Size = new System.Drawing.Size(99, 23);
-            this.rbtnCompressLossless.TabIndex = 7;
-            this.rbtnCompressLossless.Text = "Lossless";
-            this.rbtnCompressLossless.UseVisualStyleBackColor = true;
-            this.rbtnCompressLossless.CheckedChanged += new System.EventHandler(this.rbtnCompressCrf_CheckedChanged);
-            // 
-            // rbtnCompress360
-            // 
-            this.rbtnCompress360.AutoSize = true;
-            this.rbtnCompress360.Location = new System.Drawing.Point(15, 25);
-            this.rbtnCompress360.Name = "rbtnCompress360";
-            this.rbtnCompress360.Size = new System.Drawing.Size(54, 23);
-            this.rbtnCompress360.TabIndex = 14;
-            this.rbtnCompress360.Text = "360";
-            this.rbtnCompress360.UseVisualStyleBackColor = true;
-            this.rbtnCompress360.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
-            // 
-            // rbtnCompress720
-            // 
-            this.rbtnCompress720.AutoSize = true;
-            this.rbtnCompress720.Location = new System.Drawing.Point(89, 25);
-            this.rbtnCompress720.Name = "rbtnCompress720";
-            this.rbtnCompress720.Size = new System.Drawing.Size(54, 23);
-            this.rbtnCompress720.TabIndex = 15;
-            this.rbtnCompress720.Text = "720";
-            this.rbtnCompress720.UseVisualStyleBackColor = true;
-            this.rbtnCompress720.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
-            // 
-            // rbtnCompress1080
-            // 
-            this.rbtnCompress1080.AutoSize = true;
-            this.rbtnCompress1080.Checked = true;
-            this.rbtnCompress1080.Location = new System.Drawing.Point(163, 25);
-            this.rbtnCompress1080.Name = "rbtnCompress1080";
-            this.rbtnCompress1080.Size = new System.Drawing.Size(63, 23);
-            this.rbtnCompress1080.TabIndex = 16;
-            this.rbtnCompress1080.TabStop = true;
-            this.rbtnCompress1080.Text = "1080";
-            this.rbtnCompress1080.UseVisualStyleBackColor = true;
-            this.rbtnCompress1080.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
-            // 
-            // rbtnCompress2K
-            // 
-            this.rbtnCompress2K.AutoSize = true;
-            this.rbtnCompress2K.Location = new System.Drawing.Point(246, 25);
-            this.rbtnCompress2K.Name = "rbtnCompress2K";
-            this.rbtnCompress2K.Size = new System.Drawing.Size(45, 23);
-            this.rbtnCompress2K.TabIndex = 17;
-            this.rbtnCompress2K.Text = "2K";
-            this.rbtnCompress2K.UseVisualStyleBackColor = true;
-            this.rbtnCompress2K.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
-            // 
-            // rbtnCompress4K
-            // 
-            this.rbtnCompress4K.AutoSize = true;
-            this.rbtnCompress4K.Location = new System.Drawing.Point(15, 59);
-            this.rbtnCompress4K.Name = "rbtnCompress4K";
-            this.rbtnCompress4K.Size = new System.Drawing.Size(45, 23);
-            this.rbtnCompress4K.TabIndex = 18;
-            this.rbtnCompress4K.Text = "4K";
-            this.rbtnCompress4K.UseVisualStyleBackColor = true;
-            this.rbtnCompress4K.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
-            // 
-            // txtCompressCustomRes
-            // 
-            this.txtCompressCustomRes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.txtCompressCustomRes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCompressCustomRes.Enabled = false;
-            this.txtCompressCustomRes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtCompressCustomRes.Location = new System.Drawing.Point(184, 59);
-            this.txtCompressCustomRes.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.txtCompressCustomRes.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.txtCompressCustomRes.Name = "txtCompressCustomRes";
-            this.txtCompressCustomRes.Size = new System.Drawing.Size(100, 26);
-            this.txtCompressCustomRes.TabIndex = 16;
-            this.txtCompressCustomRes.Value = new decimal(new int[] {
-            360,
-            0,
-            0,
-            0});
-            this.txtCompressCustomRes.ValueChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
-            // 
-            // rbtnCompressCustomRes
-            // 
-            this.rbtnCompressCustomRes.AutoSize = true;
-            this.rbtnCompressCustomRes.Location = new System.Drawing.Point(89, 59);
-            this.rbtnCompressCustomRes.Name = "rbtnCompressCustomRes";
-            this.rbtnCompressCustomRes.Size = new System.Drawing.Size(99, 23);
-            this.rbtnCompressCustomRes.TabIndex = 15;
-            this.rbtnCompressCustomRes.Text = "Custom: ";
-            this.rbtnCompressCustomRes.UseVisualStyleBackColor = true;
-            this.rbtnCompressCustomRes.CheckedChanged += new System.EventHandler(this.rbtnCompressResolution_CheckedChanged);
-            // 
-            // chkCompressChangeRes
-            // 
-            this.chkCompressChangeRes.AutoSize = true;
-            this.chkCompressChangeRes.Checked = true;
-            this.chkCompressChangeRes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCompressChangeRes.Location = new System.Drawing.Point(549, 25);
-            this.chkCompressChangeRes.Margin = new System.Windows.Forms.Padding(10);
-            this.chkCompressChangeRes.Name = "chkCompressChangeRes";
-            this.chkCompressChangeRes.Size = new System.Drawing.Size(181, 23);
-            this.chkCompressChangeRes.TabIndex = 14;
-            this.chkCompressChangeRes.Text = "Change Resolution";
-            this.toolTip.SetToolTip(this.chkCompressChangeRes, "Scales the video to the selected resolution");
-            this.chkCompressChangeRes.UseVisualStyleBackColor = true;
-            this.chkCompressChangeRes.CheckedChanged += new System.EventHandler(this.chkCompressChangeRes_CheckedChanged);
-            // 
             // frmVideoTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1293,9 +1282,10 @@ namespace Video_Tools
             this.Name = "frmVideoTools";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Video Tools";
+            this.Text = "Video Tools 1.0.1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
+            this.Resize += new System.EventHandler(this.frmVideoTools_Resize);
             this.tabs.ResumeLayout(false);
             this.tabPlay.ResumeLayout(false);
             this.tblPlayMain.ResumeLayout(false);
@@ -1309,10 +1299,14 @@ namespace Video_Tools
             this.tblCompressInputsOutputs.ResumeLayout(false);
             this.tblCompressInputsOutputs.PerformLayout();
             this.tblCompressOptions.ResumeLayout(false);
+            this.gbCompressCompression.ResumeLayout(false);
+            this.gbCompressCompression.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCompressCustomCrf)).EndInit();
             this.gbCompressSpeed.ResumeLayout(false);
             this.gbCompressSpeed.PerformLayout();
             this.gbCompressResolution.ResumeLayout(false);
             this.gbCompressResolution.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCompressCustomRes)).EndInit();
             this.tblCompress.ResumeLayout(false);
             this.tblCompressCompletionStatus.ResumeLayout(false);
             this.tblCompressCompletionStatus.PerformLayout();
@@ -1321,10 +1315,6 @@ namespace Video_Tools
             this.gbCompressMode.PerformLayout();
             this.gbCompressOther.ResumeLayout(false);
             this.gbCompressOther.PerformLayout();
-            this.gbCompressCompression.ResumeLayout(false);
-            this.gbCompressCompression.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCompressCustomCrf)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCompressCustomRes)).EndInit();
             this.ResumeLayout(false);
 
         }

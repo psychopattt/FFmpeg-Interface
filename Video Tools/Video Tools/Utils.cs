@@ -13,10 +13,10 @@ namespace Video_Tools
     {
         #region Global Variables
 
-        private static Thread playThread;
+        private static readonly Thread playThread;
         public static Button playButton;
 
-        private static Thread compressThread;
+        private static readonly Thread compressThread;
         public static byte compressMode = 0;
         public static Button compressButton;
         public static Label lblNbCompressed;
@@ -25,14 +25,22 @@ namespace Video_Tools
         public static Stopwatch chrono;
         public static System.Windows.Forms.Timer timer;
 
-        private static List<string> videoFileFilters = new List<string> { "Video Files|*.mpeg;*.wmv;*.avi;*.mpg;*.mov;*.mp4" };
-        private static List<string> audioFileFilters = new List<string> { "Audio Files|*.aac;*.m4a;*.mp3;*.wav" };
-        private static List<string> videoFolderFilters = new List<string> { ".mpeg", ".wmv", ".avi", ".mpg", ".mov", ".mp4" };
-        private static List<string> audioFolderFilters = new List<string> { ".aac", ".m4a", ".mp3", ".wav" };
+        private static readonly string[] videoFileFilters = { "Video Files|*.mpeg;*.wmv;*.avi;*.mpg;*.mov;*.mp4" };
+        private static readonly string[] audioFileFilters = { "Audio Files|*.aac;*.m4a;*.mp3;*.wav" };
+        private static readonly string[] videoFolderFilters = { ".mpeg", ".wmv", ".avi", ".mpg", ".mov", ".mp4" };
+        private static readonly string[] audioFolderFilters = { ".aac", ".m4a", ".mp3", ".wav" };
 
         #endregion
 
         #region Process Handling
+
+        public static string GetExecutablePath(string exeName)
+        {
+            exeName += ".exe";
+            string[] foundExecutables = Directory.GetFiles(Directory.GetCurrentDirectory(), exeName, SearchOption.AllDirectories);
+
+            return foundExecutables.Length > 0 ? foundExecutables[0] : null;
+        }
 
         public static void LaunchProcess(string arguments, string[] inputPaths, bool autoExit, bool simultaneousLaunch)
         {
@@ -40,10 +48,12 @@ namespace Video_Tools
                 return;
 
             EnablePlayButton(false);
-            LaunchProcess(0, arguments, inputPaths, " ", autoExit, false, simultaneousLaunch, false, " ", false, false, playThread);
+            LaunchProcess(0, GetExecutablePath("ffplay"), arguments, inputPaths, " ", autoExit, false,
+                simultaneousLaunch, false, " ", false, false, playThread);
         }
 
-        public static void LaunchProcess(string arguments, string[] inputPaths, bool autoExit, bool autoOverwrite, string outputFolder, bool recreateDirTree, string dirTreeRoot, bool revertBiggerFiles, bool generateReport)
+        public static void LaunchProcess(string arguments, string[] inputPaths, bool autoExit,bool autoOverwrite,
+            string outputFolder, bool recreateDirTree, string dirTreeRoot, bool revertBiggerFiles, bool generateReport)
         {
             if (inputPaths.Length == 0 || outputFolder.Length == 0 || arguments.Length == 0)
                 return;
@@ -52,26 +62,25 @@ namespace Video_Tools
                 dirTreeRoot = " ";
 
             EnableCompressButton(false);
-            LaunchProcess(1, arguments, inputPaths, outputFolder, autoExit, autoOverwrite, false, recreateDirTree, dirTreeRoot, revertBiggerFiles, generateReport, compressThread);
+            LaunchProcess(1, GetExecutablePath("ffmpeg"), arguments, inputPaths, outputFolder, autoExit,
+                autoOverwrite, false, recreateDirTree, dirTreeRoot, revertBiggerFiles, generateReport, compressThread);
         }
 
-        private static void LaunchProcess(byte currentTab, string arguments, string[] inputPaths, string outputFolder, bool autoExit, bool autoOverwrite, bool simultaneousLaunch, bool recreateDirTree, string dirTreeRoot, bool revertBiggerFiles, bool generateReport, Thread thread)
+        private static void LaunchProcess(byte currentTab, string exePath, string arguments, string[] inputPaths,
+            string outputFolder, bool autoExit, bool autoOverwrite, bool simultaneousLaunch, bool recreateDirTree,
+            string dirTreeRoot, bool revertBiggerFiles, bool generateReport, Thread thread)
         {
-            string autoExitCommand = "";
+            string autoExitCommand = autoExit ? "& exit /b" : "";
             outputFolder = outputFolder.Remove(outputFolder.Length - 1);
             dirTreeRoot = dirTreeRoot.Remove(dirTreeRoot.Length - 1);
             ProcessStartInfo processInfo;
             string output = "";
-            string command;
 
             long inputSize = 0;
             long outputSize = 0;
             uint nbRevertedFiles = 0;
             StringBuilder revertedFilesBuilder = new StringBuilder("");
             string extraReportInfo = "";
-
-            if (autoExit)
-                autoExitCommand = "& exit /b";
 
             try
             {
@@ -96,19 +105,24 @@ namespace Video_Tools
                                 }
                                 catch (Exception)
                                 {
-                                    MessageBox.Show("Invalid directory tree root.\nMake sure that the directory tree root is present in ALL file paths.\nStopping compression...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Invalid directory tree root.\nMake sure that the directory tree root is present in ALL file paths.\nStopping compression...",
+                                        "Error: Invalid directory root", MessageBoxButtons.OK, MessageBoxIcon.Error
+                                    );
+                                    
                                     break;
                                 }
                             }
                             else
+                            {
                                 output = outputFolder + input.Substring(input.LastIndexOf("\\"));
+                            }
                         }
 
                         string compatibleOutput = output.Replace("%", "");
+                        string command = arguments.Replace("\"input\"", input).Replace("\"output\"", compatibleOutput);
+                        command = command.Remove(0, command.IndexOf(' ')).Insert(0, "\"" + exePath + "\"");
 
-                        command = arguments.Replace("\"input\"", input).Replace("\"output\"", compatibleOutput).Insert(0, ".\\ffmpeg\\");
-
-                        processInfo = new ProcessStartInfo("cmd.exe", $@"/k { command } " + autoExitCommand);
+                        processInfo = new ProcessStartInfo("cmd.exe", $@"/k { "\"" + command + "\""} " + autoExitCommand);
                         processInfo.WindowStyle = ProcessWindowStyle.Minimized;
 
                         Process process = new Process();
@@ -187,8 +201,14 @@ namespace Video_Tools
                                     revertedFilesBuilder.Insert(0, "\n");
 
                                 TimeSpan span = chrono.Elapsed;
-                                ShowReport(progressBar.Maximum, string.Format("{0}:{1:00}:{2:00}:{3:00}", span.Days, span.Hours, span.Minutes, span.Seconds), inputSize, outputSize, extraReportInfo, nbRevertedFiles, revertedFilesBuilder.ToString());
+
+                                ShowReport(
+                                    progressBar.Maximum,
+                                    string.Format("{0}:{1:00}:{2:00}:{3:00}", span.Days, span.Hours, span.Minutes, span.Seconds),
+                                    inputSize, outputSize, extraReportInfo, nbRevertedFiles, revertedFilesBuilder.ToString()
+                                );
                             }
+
                             StopTimer();
                             EnableCompressButton(true);
                             break;
@@ -293,7 +313,7 @@ namespace Video_Tools
 
         #region Other
 
-        private static List<string> GetFilters(bool folderMode, byte tab)
+        private static string[] GetFilters(bool folderMode, byte tab)
         {
             if (folderMode)
             {
@@ -303,7 +323,7 @@ namespace Video_Tools
                     filters.AddRange(videoFolderFilters);
                     filters.AddRange(audioFolderFilters);
                     filters.AddRange(new List<string> { ".jpg", ".png", ".gif" });
-                    return filters;
+                    return filters.ToArray();
                 }
 
                 switch (compressMode)
@@ -311,9 +331,9 @@ namespace Video_Tools
                     case 1:
                         return audioFolderFilters;
                     case 2:
-                        return new List<string> { ".png" };
+                        return new string[] { ".png" };
                     case 3:
-                        return new List<string> { ".jpg" };
+                        return new string[] { ".jpg" };
                     default:
                         return videoFolderFilters;
                 }
@@ -326,7 +346,7 @@ namespace Video_Tools
                     filters[0] += videoFileFilters[0].Substring(videoFileFilters[0].IndexOf('|') + 1) + ";";
                     filters[0] += audioFileFilters[0].Substring(videoFileFilters[0].IndexOf('|') + 1);
                     filters[0] += ";*.jpg;*.png;*.gif";
-                    return filters;
+                    return filters.ToArray();
                 }
 
                 switch (compressMode)
@@ -334,9 +354,9 @@ namespace Video_Tools
                     case 1:
                         return audioFileFilters;
                     case 2:
-                        return new List<string> { "PNG Files|*.png;*.PNG" };
+                        return new string[] { "PNG Files|*.png;*.PNG" };
                     case 3:
-                        return new List<string> { "JPG Files|*.jpg;*.JPG" };
+                        return new string[] { "JPG Files|*.jpg;*.JPG" };
                     default:
                         return videoFileFilters;
                 }

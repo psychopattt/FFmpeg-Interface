@@ -11,8 +11,7 @@ namespace Video_Tools
         #region General
 
         int lastFormWidth = 0;
-        const string ffmpegPath = "./ffmpeg/ffmpeg.exe";
-        const string ffplayPath = "./ffmpeg/ffplay.exe";
+        FormWindowState lastFormState = FormWindowState.Normal;
 
         public frmVideoTools()
         {
@@ -21,7 +20,7 @@ namespace Video_Tools
 
         private void Form1_Load(object sender, System.EventArgs e)
         {
-            Resize_Form();
+            ResizeForm();
             Utils.playButton = btnPlay;
             chkCompressOutputTree.Checked = false;
             Utils.compressButton = btnCompress;
@@ -37,9 +36,18 @@ namespace Video_Tools
             txtPlayKeybinds.Select(0, 0);
         }
 
+        private void frmVideoTools_Resize(object sender, EventArgs e)
+        {
+            if (WindowState != FormWindowState.Minimized && WindowState != lastFormState)
+            {
+                ResizeForm();
+                lastFormState = WindowState;
+            }
+        }
+
         private void Form1_ResizeEnd(object sender, System.EventArgs e)
         {
-            Resize_Form();
+            ResizeForm();
         }
 
         private void tabs_DrawItem(object sender, DrawItemEventArgs e)
@@ -53,7 +61,7 @@ namespace Video_Tools
             TextRenderer.DrawText(e.Graphics, page.Text, e.Font, paddedBounds, page.ForeColor);
         }
 
-        private void Resize_Form()
+        private void ResizeForm()
         {
             if (lastFormWidth != Width)
             {
@@ -62,7 +70,7 @@ namespace Video_Tools
             }
         }
 
-        public static void SetOption(RichTextBox textBox, bool state, string option, string nextOption = "")
+        public static void SetOption(RichTextBox textBox, bool enabled, string option, string nextOption = "")
         {
             int insertPos;
 
@@ -71,19 +79,23 @@ namespace Video_Tools
             else
                 insertPos = textBox.Text.IndexOf(nextOption);
 
-            if (state && !textBox.Text.Contains(" " + option))
+            if (enabled && !textBox.Text.Contains(" " + option))
                 textBox.Text = textBox.Text.Insert(insertPos, " " + option);
-            else if (!state)
+            else if (!enabled)
                 textBox.Text = textBox.Text.Replace(" " + option, "");
         }
 
-        private bool FFmpegInstalled(bool ffmpeg)
+        private bool ExecutableInstalled(string exeName)
         {
-            string exeName = ffmpeg ? "FFmpeg" : "FFplay";
+            string exePath = Utils.GetExecutablePath(exeName);
 
-            if (ffmpeg && !File.Exists(ffmpegPath) || !ffmpeg && !File.Exists(ffplayPath))
+            if (string.IsNullOrEmpty(exePath))
             {
-                MessageBox.Show(exeName + " needs to be installed in:\n\"exe_folder\\ffmpeg\\" + exeName.ToLower() + ".exe\"", exeName + " missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    exeName + ".exe needs to be installed under this program's parent directory.",
+                    "Missing executable: " + exeName + ".exe", MessageBoxButtons.OK, MessageBoxIcon.Warning
+                );
+
                 return false;
             }
 
@@ -104,9 +116,38 @@ namespace Video_Tools
             Utils.SelectFolders(txtPlayFilePath, chkPlaySearchSubfolders.Checked, 0);
         }
 
+        private bool ValidatePlayParameters()
+        {
+            byte errorCount = 0;
+            string errorMessage = "";
+
+            if (string.IsNullOrWhiteSpace(txtPlayCommand.Text))
+            {
+                errorCount++;
+                errorMessage += "Play command missing. A reset is recommended.\n";
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPlayFilePath.Text))
+            {
+                errorCount++;
+                errorMessage += "No files selected.\n";
+            }
+
+            if (errorCount > 0)
+            {
+                MessageBox.Show(errorCount.ToString() + " errors found.\n" + errorMessage,
+                    "Error: Invalid play settings", MessageBoxButtons.OK, MessageBoxIcon.Warning
+                );
+
+                return false;
+            }
+
+            return true;
+        }
+
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            if (!FFmpegInstalled(false))
+            if (!ExecutableInstalled("ffplay") || !ValidatePlayParameters())
                 return;
 
             Utils.LaunchProcess(txtPlayCommand.Text, txtPlayFilePath.Lines, chkPlayCmdAutoExit.Checked, chkPlaySimultaneousLaunch.Checked);
@@ -187,9 +228,62 @@ namespace Video_Tools
             }
         }
 
+        private bool ValidateCompressionParameters()
+        {
+            byte errorCount = 0;
+            string errorMessage = "";
+
+            if (string.IsNullOrWhiteSpace(txtCompressCommand.Text))
+            {
+                errorCount++;
+                errorMessage += "Compression command missing. A reset is recommended.\n";
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCompressOutputFolder.Text))
+            {
+                errorCount++;
+                errorMessage += "Missing output directory.\n";
+            }
+            else if (!Directory.Exists(txtCompressOutputFolder.Text.Replace("\"", "")))
+            {
+                errorCount++;
+                errorMessage += "The output directory " + txtCompressOutputFolder.Text + " does not exist.\n";
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCompressInputFiles.Text))
+            {
+                errorCount++;
+                errorMessage += "Missing input files.\n";
+            }
+            else
+            {
+                foreach (string inputFile in txtCompressInputFiles.Lines)
+                {
+                    if (!File.Exists(inputFile.Replace("\"", "")))
+                    {
+                        errorCount++;
+
+                        if (errorMessage.Length < 1000)
+                            errorMessage += "The file " + inputFile + " does not exist.\n";
+                    }
+                }
+            }
+
+            if (errorCount > 0)
+            {
+                MessageBox.Show(errorCount.ToString() + " errors found; compression aborted.\n" + errorMessage,
+                    "Error: Invalid compression settings", MessageBoxButtons.OK, MessageBoxIcon.Warning
+                );
+
+                return false;
+            }
+
+            return true;
+        }
+
         private void btnCompress_Click(object sender, EventArgs e)
         {
-            if (!FFmpegInstalled(true))
+            if (!ExecutableInstalled("ffmpeg") || !ValidateCompressionParameters())
                 return;
 
             if (txtCompressDirTreeRoot.Enabled && txtCompressDirTreeRoot.Text.Length > 0)
@@ -417,15 +511,19 @@ namespace Video_Tools
             {
                 case 0: // Video
                     txtCompressCommand.Text = "ffmpeg -i \"input\" -c:v libx265 -preset " + lastCompressSpeed + " -crf " + lastCompressCrf + " -vf " + lastCompressRes + " -c:a copy -hide_banner -nostdin \"output\"";
+                    SetOption(txtCompressCommand, chkCompressChangeRes.Checked, "-vf " + lastCompressRes, " \"output\"");
+                    SetOption(txtCompressCommand, !chkCompressAudio.Checked, "-c:a copy", " \"output\"");
                     break;
                 case 1: // Audio
                     txtCompressCommand.Text = "ffmpeg -i \"input\" -map 0:a:0 -b:a 96k \"output\"";
                     break;
                 case 2: // .png
                     txtCompressCommand.Text = "ffmpeg -i \"input\" -vf " + lastCompressRes + " \"output\""; // Automatically compressed as much as possible (lossless)
+                    SetOption(txtCompressCommand, chkCompressChangeRes.Checked, "-vf " + lastCompressRes, " \"output\"");
                     break;
                 case 3: // .jpg
                     txtCompressCommand.Text = "ffmpeg -i \"input\" -vf " + lastCompressRes + " -q:v 1 \"output\"";
+                    SetOption(txtCompressCommand, chkCompressChangeRes.Checked, "-vf " + lastCompressRes, " \"output\"");
                     break;
             }
 
