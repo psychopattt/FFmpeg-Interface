@@ -398,11 +398,16 @@ namespace Video_Tools
             });
         }
 
-        private static void ShowReport(int nbFiles, string duration, long inputSize, long outputSize, string extraReportInfo, uint nbRevertedFiles, string revertedFiles)
+        private static void ShowReport(int nbFiles, string duration, long inputSize, long outputSize,
+            string extraReportInfo, uint nbRevertedFiles, string revertedFiles)
         {
             compressButton.BeginInvoke((Action)delegate ()
             {
-                new FrmCompressionReport(nbFiles, duration, inputSize, outputSize, extraReportInfo, nbRevertedFiles, revertedFiles).Show();
+                FrmCompressionReport compressionReport = new FrmCompressionReport(
+                    nbFiles, duration, inputSize, outputSize, extraReportInfo, nbRevertedFiles, revertedFiles
+                );
+
+                compressionReport.Show(Application.OpenForms[0]);
             });
         }
 

@@ -111,8 +111,9 @@ namespace Video_Tools
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(300, 400);
             this.Name = "FrmCompressionReport";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Compression Report";
+            this.Load += new System.EventHandler(this.FrmCompressionReport_Load);
             this.tblReportMain.ResumeLayout(false);
             this.tblReportMain.PerformLayout();
             this.ResumeLayout(false);

@@ -18,6 +18,11 @@ namespace Video_Tools
             );
         }
 
+        private void FrmCompressionReport_Load(object sender, EventArgs e)
+        {
+            CenterToParent();
+        }
+
         private void btnReportClose_Click(object sender, EventArgs e)
         {
             Dispose();
