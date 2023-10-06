@@ -67,6 +67,7 @@ namespace Video_Tools
             this.txtReportDesc.ReadOnly = true;
             this.txtReportDesc.Size = new System.Drawing.Size(652, 516);
             this.txtReportDesc.TabIndex = 6;
+            this.txtReportDesc.TabStop = false;
             this.txtReportDesc.Text = "";
             // 
             // lblReportTitle
@@ -84,7 +85,10 @@ namespace Video_Tools
             // btnReportClose
             // 
             this.btnReportClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnReportClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnReportClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnReportClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnReportClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReportClose.Location = new System.Drawing.Point(4, 583);
             this.btnReportClose.Name = "btnReportClose";
             this.btnReportClose.Size = new System.Drawing.Size(656, 94);
@@ -98,6 +102,7 @@ namespace Video_Tools
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.CancelButton = this.btnReportClose;
             this.ClientSize = new System.Drawing.Size(664, 681);
             this.Controls.Add(this.tblReportMain);
             this.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -106,7 +111,6 @@ namespace Video_Tools
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(300, 400);
             this.Name = "FrmCompressionReport";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compression Report";
             this.tblReportMain.ResumeLayout(false);
