@@ -80,7 +80,8 @@ namespace Video_Tools
             long inputSize = 0;
             long outputSize = 0;
             uint nbRevertedFiles = 0;
-            StringBuilder revertedFilesBuilder = new StringBuilder("");
+            StringBuilder revertedFilesBuilder = new StringBuilder();
+            StringBuilder failedRevertsBuilder = new StringBuilder();
             string extraReportInfo = "";
 
             try
@@ -161,16 +162,24 @@ namespace Video_Tools
                                     {
                                         if (revertBiggerFiles)
                                         {
-                                            File.Copy(input, output, true);
+                                            try {
+                                                File.Copy(input, output, true);
 
-                                            if (generateReport)
-                                            {
-                                                outputSize -= outputInfo.Length;
-                                                outputSize += inputInfo.Length;
+                                                if (generateReport)
+                                                {
+                                                    outputSize -= outputInfo.Length;
+                                                    outputSize += inputInfo.Length;
+                                                    revertedFilesBuilder.AppendLine(output);
+                                                }
+                                            }
+                                            catch {
+                                                failedRevertsBuilder.AppendLine(output);
+                                            }
+                                            finally {
+                                                nbRevertedFiles++;
                                             }
                                         }
-
-                                        if (generateReport)
+                                        else if (generateReport)
                                         {
                                             nbRevertedFiles++;
                                             revertedFilesBuilder.AppendLine(output);
@@ -192,16 +201,24 @@ namespace Video_Tools
                             if (generateReport)
                             {
                                 if (revertBiggerFiles && nbRevertedFiles > 0)
+                                {
                                     revertedFilesBuilder.Insert(0, "They were reverted back to the original.\n\n");
+
+                                    if (failedRevertsBuilder.Length > 0)
+                                        failedRevertsBuilder.Insert(0, "Some files could not be reverted.\n\n");
+                                }
                                 else
+                                {
                                     revertedFilesBuilder.Insert(0, "\n");
+                                }
 
                                 TimeSpan span = chrono.Elapsed;
 
                                 ShowReport(
                                     progressBar.Maximum,
                                     string.Format("{0}:{1:00}:{2:00}:{3:00}", span.Days, span.Hours, span.Minutes, span.Seconds),
-                                    inputSize, outputSize, extraReportInfo, nbRevertedFiles, revertedFilesBuilder.ToString()
+                                    inputSize, outputSize, extraReportInfo, nbRevertedFiles,revertedFilesBuilder.ToString(),
+                                    failedRevertsBuilder.ToString()
                                 );
                             }
 
@@ -411,12 +428,13 @@ namespace Video_Tools
         }
 
         private static void ShowReport(int nbFiles, string duration, long inputSize, long outputSize,
-            string extraReportInfo, uint nbRevertedFiles, string revertedFiles)
+            string extraReportInfo, uint nbRevertedFiles, string revertedFiles, string failedReverts)
         {
             compressButton.BeginInvoke((Action)delegate ()
             {
                 FrmCompressionReport compressionReport = new FrmCompressionReport(
-                    nbFiles, duration, inputSize, outputSize, extraReportInfo, nbRevertedFiles, revertedFiles
+                    nbFiles, duration, inputSize, outputSize, extraReportInfo,
+                    nbRevertedFiles, revertedFiles, failedReverts
                 );
 
                 compressionReport.Show(Application.OpenForms[0]);
