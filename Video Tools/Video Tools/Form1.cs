@@ -434,18 +434,22 @@ namespace Video_Tools
         {
             if (!txtCompressDirTreeRoot.ReadOnly)
             {
-                if (txtCompressInputFiles.Text.Length > 0)
+                if (txtCompressInputFiles.Text.Length > 0 && !txtCompressInputFiles.Lines[0].Replace("\"", "")
+                    .StartsWith(txtCompressDirTreeRoot.Text.Replace("\"", "")))
                 {
-                    if (!txtCompressInputFiles.Lines[0].Replace("\"", "").StartsWith(txtCompressDirTreeRoot.Text.Replace("\"", "")))
-                        txtCompressDirTreeRoot.ForeColor = Color.Red;
-                    else
-                        txtCompressDirTreeRoot.ForeColor = Color.FromArgb(224, 224, 224);
+                    txtCompressDirTreeRoot.ForeColor = Color.Red;
+                    lblCompressDirTreeRoot.Text = "Directory Tree Root (invalid):";
                 }
                 else
+                {
                     txtCompressDirTreeRoot.ForeColor = Color.FromArgb(224, 224, 224);
+                    lblCompressDirTreeRoot.Text = "Directory Tree Root:";
+                }
             }
             else
-                txtCompressDirTreeRoot.ForeColor = Color.Black;
+            {
+                txtCompressDirTreeRoot.ForeColor = Color.FromArgb(13, 13, 13);
+            }
         }
 
         private void chkCompressMode_CheckedChanged(object sender, EventArgs e)
