@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Video_Tools
 {
@@ -89,7 +91,7 @@ namespace Video_Tools
         {
             string exePath = Utils.GetExecutablePath(exeName);
 
-            if (string.IsNullOrEmpty(exePath))
+            if (string.IsNullOrWhiteSpace(exePath))
             {
                 MessageBox.Show(
                     exeName + ".exe needs to be installed under this program's parent directory.",
@@ -135,8 +137,8 @@ namespace Video_Tools
 
             if (errorCount > 0)
             {
-                MessageBox.Show(errorCount.ToString() + " errors found.\n" + errorMessage,
-                    "Error: Invalid play settings", MessageBoxButtons.OK, MessageBoxIcon.Warning
+                MessageBox.Show(errorCount.ToString() + " warnings found.\n" + errorMessage,
+                    "Warning: Invalid play settings", MessageBoxButtons.OK, MessageBoxIcon.Warning
                 );
 
                 return false;
@@ -213,6 +215,11 @@ namespace Video_Tools
             Utils.SelectFiles(txtCompressInputFiles, 1);
         }
 
+        private void txtCompressInputFiles_TextChanged(object sender, EventArgs e)
+        {
+            UpdateTxtDirTreeRoot();
+        }
+
         private void btnCompressInputFolder_Click(object sender, EventArgs e)
         {
             Utils.SelectFolders(txtCompressInputFiles, chkCompressSubFolders.Checked, 1);
@@ -250,6 +257,12 @@ namespace Video_Tools
                 errorMessage += "The output directory " + txtCompressOutputFolder.Text + " does not exist.\n";
             }
 
+            if (chkCompressOutputTree.Checked && lblCompressDirTreeRoot.Text.Contains("invalid"))
+            {
+                errorCount++;
+                errorMessage += "Invalid directory tree root.\n";
+            }
+
             if (string.IsNullOrWhiteSpace(txtCompressInputFiles.Text))
             {
                 errorCount++;
@@ -257,22 +270,41 @@ namespace Video_Tools
             }
             else
             {
-                foreach (string inputFile in txtCompressInputFiles.Lines)
+                List<string> inputFiles = txtCompressInputFiles.Lines.ToList();
+
+                for (int fileIndex = 0; fileIndex < inputFiles.Count; fileIndex++)
                 {
-                    if (!File.Exists(inputFile.Replace("\"", "")))
+                    string inputFile = inputFiles[fileIndex];
+
+                    if (string.IsNullOrWhiteSpace(inputFile))
+                    {
+                        inputFiles.RemoveAt(fileIndex);
+                        fileIndex--;
+                    }
+                    else if (!File.Exists(inputFile.Replace("\"", "")))
                     {
                         errorCount++;
 
                         if (errorMessage.Length < 1000)
                             errorMessage += "The file " + inputFile + " does not exist.\n";
                     }
+                    else if (chkCompressOutputTree.Checked && !lblCompressDirTreeRoot.Text.Contains("invalid") &&
+                        !Utils.PathStartsWithSubPath(inputFile, txtCompressDirTreeRoot.Text))
+                    {
+                        errorCount++;
+
+                        if (errorMessage.Length < 1000)
+                            errorMessage += "The file " + inputFile + " does not start with the directory tree root.\n";
+                    }
                 }
+
+                txtCompressInputFiles.Lines = inputFiles.ToArray();
             }
 
             if (errorCount > 0)
             {
-                MessageBox.Show(errorCount.ToString() + " errors found; compression aborted.\n" + errorMessage,
-                    "Error: Invalid compression settings", MessageBoxButtons.OK, MessageBoxIcon.Warning
+                MessageBox.Show(errorCount.ToString() + " warnings found; compression aborted.\n" + errorMessage,
+                    "Warning: Invalid compression settings", MessageBoxButtons.OK, MessageBoxIcon.Warning
                 );
 
                 return false;
@@ -398,7 +430,7 @@ namespace Video_Tools
             {
                 lblCompressDirTreeRoot.Enabled = false;
                 txtCompressDirTreeRoot.ReadOnly = true;
-                txtCompressDirTreeRoot.ForeColor = Color.Black;
+                txtCompressDirTreeRoot.ForeColor = Color.FromArgb(13, 13, 13);
             }
         }
 
@@ -430,12 +462,12 @@ namespace Video_Tools
             SetCommand();
         }
 
-        private void txtCompressDirTreeRoot_TextChanged(object sender, EventArgs e)
+        private void UpdateTxtDirTreeRoot()
         {
             if (!txtCompressDirTreeRoot.ReadOnly)
             {
-                if (txtCompressInputFiles.Text.Length > 0 && !txtCompressInputFiles.Lines[0].Replace("\"", "")
-                    .StartsWith(txtCompressDirTreeRoot.Text.Replace("\"", "")))
+                if (txtCompressInputFiles.Text.Length > 0 &&
+                    !Utils.PathStartsWithSubPath(txtCompressInputFiles.Lines[0], txtCompressDirTreeRoot.Text))
                 {
                     txtCompressDirTreeRoot.ForeColor = Color.Red;
                     lblCompressDirTreeRoot.Text = "Directory Tree Root (invalid):";
@@ -450,6 +482,11 @@ namespace Video_Tools
             {
                 txtCompressDirTreeRoot.ForeColor = Color.FromArgb(13, 13, 13);
             }
+        }
+
+        private void txtCompressDirTreeRoot_TextChanged(object sender, EventArgs e)
+        {
+            UpdateTxtDirTreeRoot();
         }
 
         private void chkCompressMode_CheckedChanged(object sender, EventArgs e)

@@ -88,6 +88,9 @@ namespace Video_Tools
                 {
                     foreach (string readOnlyInput in inputPaths)
                     {
+                        if (string.IsNullOrWhiteSpace(readOnlyInput))
+                            continue;
+
                         string input = readOnlyInput;
 
                         if (currentTab == 1)
@@ -99,18 +102,7 @@ namespace Video_Tools
                                 else
                                     output = outputFolder + input.Remove(0, 3);
 
-                                try
-                                {
-                                    Directory.CreateDirectory(output.Replace("\"", "").Remove(output.LastIndexOf('\\') - 1));
-                                }
-                                catch (Exception)
-                                {
-                                    MessageBox.Show("Invalid directory tree root.\nMake sure that the directory tree root is present in ALL file paths.\nStopping compression...",
-                                        "Error: Invalid directory root", MessageBoxButtons.OK, MessageBoxIcon.Error
-                                    );
-                                    
-                                    break;
-                                }
+                                Directory.CreateDirectory(output.Replace("\"", "").Remove(output.LastIndexOf('\\') - 1));
                             }
                             else
                             {
@@ -222,13 +214,21 @@ namespace Video_Tools
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message, "Process Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Critical error encountered\n" + exception.Message, 
+                    "Process Error", MessageBoxButtons.OK, MessageBoxIcon.Error
+               );
             }
         }
 
         #endregion
 
         #region Files Handling
+
+        public static bool PathStartsWithSubPath(string path, string subPath)
+        {
+            return path.Replace("\"", "").StartsWith(subPath.Replace("\"", ""));
+        }
 
         public static void SelectFiles(RichTextBox txtPaths, byte tab)
         {
@@ -285,7 +285,7 @@ namespace Video_Tools
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message, "Folder Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(exception.Message, "Directory Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 IEnumerable<string> files = null;
@@ -296,7 +296,7 @@ namespace Video_Tools
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(exception.Message, "Folder Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(exception.Message, "Directory Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 if (files != null)

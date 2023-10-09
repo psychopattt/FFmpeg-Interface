@@ -567,6 +567,7 @@ namespace Video_Tools
             this.txtCompressInputFiles.Size = new System.Drawing.Size(790, 160);
             this.txtCompressInputFiles.TabIndex = 4;
             this.txtCompressInputFiles.Text = "";
+            this.txtCompressInputFiles.TextChanged += new System.EventHandler(this.txtCompressInputFiles_TextChanged);
             // 
             // txtCompressOutputFolder
             // 
@@ -996,7 +997,7 @@ namespace Video_Tools
             this.tblCompressCompletionStatus.ColumnCount = 3;
             this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
+            this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 93F));
             this.tblCompressCompletionStatus.Controls.Add(this.lblCompressProgressTimer, 1, 0);
             this.tblCompressCompletionStatus.Controls.Add(this.lblCompressNbFiles, 0, 0);
             this.tblCompressCompletionStatus.Controls.Add(this.progressBar, 0, 1);
@@ -1014,7 +1015,7 @@ namespace Video_Tools
             // 
             this.lblCompressProgressTimer.AutoSize = true;
             this.lblCompressProgressTimer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCompressProgressTimer.Location = new System.Drawing.Point(717, 1);
+            this.lblCompressProgressTimer.Location = new System.Drawing.Point(716, 1);
             this.lblCompressProgressTimer.Name = "lblCompressProgressTimer";
             this.lblCompressProgressTimer.Size = new System.Drawing.Size(124, 34);
             this.lblCompressProgressTimer.TabIndex = 3;
@@ -1027,7 +1028,7 @@ namespace Video_Tools
             this.lblCompressNbFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCompressNbFiles.Location = new System.Drawing.Point(4, 1);
             this.lblCompressNbFiles.Name = "lblCompressNbFiles";
-            this.lblCompressNbFiles.Size = new System.Drawing.Size(706, 34);
+            this.lblCompressNbFiles.Size = new System.Drawing.Size(705, 34);
             this.lblCompressNbFiles.TabIndex = 0;
             this.lblCompressNbFiles.Text = "0 / 0 files";
             this.lblCompressNbFiles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1048,9 +1049,9 @@ namespace Video_Tools
             // 
             this.lblCompressPercentFiles.AutoSize = true;
             this.lblCompressPercentFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCompressPercentFiles.Location = new System.Drawing.Point(848, 1);
+            this.lblCompressPercentFiles.Location = new System.Drawing.Point(847, 1);
             this.lblCompressPercentFiles.Name = "lblCompressPercentFiles";
-            this.lblCompressPercentFiles.Size = new System.Drawing.Size(86, 34);
+            this.lblCompressPercentFiles.Size = new System.Drawing.Size(87, 34);
             this.lblCompressPercentFiles.TabIndex = 1;
             this.lblCompressPercentFiles.Text = "0%";
             this.lblCompressPercentFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
