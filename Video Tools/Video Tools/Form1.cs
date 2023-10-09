@@ -492,7 +492,7 @@ namespace Video_Tools
         {
             lblCompressNbFiles.Text = "0 / " + nbFiles + " files";
             lblCompressProgressTimer.Text = "0:00:00:00";
-            lblCompressPercentFiles.Text = "0 %";
+            lblCompressPercentFiles.Text = "0%";
             progressBar.Value = 0;
             progressBar.Maximum = nbFiles;
             chrono.Start();
@@ -502,7 +502,10 @@ namespace Video_Tools
         private void timer_Tick(object sender, EventArgs e)
         {
             TimeSpan span = chrono.Elapsed;
-            lblCompressProgressTimer.Text = string.Format("{0}:{1:00}:{2:00}:{3:00}", span.Days, span.Hours, span.Minutes, span.Seconds);
+            lblCompressProgressTimer.Text = string.Format(
+                "{0}:{1:00}:{2:00}:{3:00}",
+                span.Days, span.Hours, span.Minutes, span.Seconds
+            );
         }
 
         private void SetCommand()

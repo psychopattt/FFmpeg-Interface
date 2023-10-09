@@ -489,12 +489,13 @@ namespace Video_Tools
             this.txtCompressCommand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.txtCompressCommand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblCompressMain.SetColumnSpan(this.txtCompressCommand, 2);
+            this.txtCompressCommand.DetectUrls = false;
             this.txtCompressCommand.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCompressCommand.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtCompressCommand.Location = new System.Drawing.Point(8, 460);
-            this.txtCompressCommand.Margin = new System.Windows.Forms.Padding(8);
+            this.txtCompressCommand.Location = new System.Drawing.Point(6, 460);
+            this.txtCompressCommand.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtCompressCommand.Name = "txtCompressCommand";
-            this.txtCompressCommand.Size = new System.Drawing.Size(1234, 68);
+            this.txtCompressCommand.Size = new System.Drawing.Size(1238, 68);
             this.txtCompressCommand.TabIndex = 11;
             this.txtCompressCommand.Text = "ffmpeg -i \"input\" -c:v libx265 -preset \"slow\" -crf \"25\" -vf \"scale=-1:1080\" -c:a " +
     "copy -hide_banner -nostdin \"output\"";
@@ -540,12 +541,13 @@ namespace Video_Tools
             // 
             this.txtCompressDirTreeRoot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.txtCompressDirTreeRoot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCompressDirTreeRoot.DetectUrls = false;
             this.txtCompressDirTreeRoot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCompressDirTreeRoot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtCompressDirTreeRoot.Location = new System.Drawing.Point(801, 182);
-            this.txtCompressDirTreeRoot.Margin = new System.Windows.Forms.Padding(5, 2, 5, 8);
+            this.txtCompressDirTreeRoot.Location = new System.Drawing.Point(799, 182);
+            this.txtCompressDirTreeRoot.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
             this.txtCompressDirTreeRoot.Name = "txtCompressDirTreeRoot";
-            this.txtCompressDirTreeRoot.Size = new System.Drawing.Size(438, 56);
+            this.txtCompressDirTreeRoot.Size = new System.Drawing.Size(442, 61);
             this.txtCompressDirTreeRoot.TabIndex = 8;
             this.txtCompressDirTreeRoot.Text = "";
             this.toolTip.SetToolTip(this.txtCompressDirTreeRoot, "Remove this string from all file paths when using \"Recreate Dir Tree\"");
@@ -556,13 +558,13 @@ namespace Video_Tools
             this.txtCompressInputFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.txtCompressInputFiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tblCompressInputsOutputs.SetColumnSpan(this.txtCompressInputFiles, 2);
+            this.txtCompressInputFiles.DetectUrls = false;
             this.txtCompressInputFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCompressInputFiles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtCompressInputFiles.Location = new System.Drawing.Point(5, 83);
-            this.txtCompressInputFiles.Margin = new System.Windows.Forms.Padding(5, 3, 5, 8);
+            this.txtCompressInputFiles.Location = new System.Drawing.Point(3, 83);
             this.txtCompressInputFiles.Name = "txtCompressInputFiles";
             this.tblCompressInputsOutputs.SetRowSpan(this.txtCompressInputFiles, 3);
-            this.txtCompressInputFiles.Size = new System.Drawing.Size(786, 155);
+            this.txtCompressInputFiles.Size = new System.Drawing.Size(790, 160);
             this.txtCompressInputFiles.TabIndex = 5;
             this.txtCompressInputFiles.Text = "";
             // 
@@ -570,12 +572,12 @@ namespace Video_Tools
             // 
             this.txtCompressOutputFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.txtCompressOutputFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCompressOutputFolder.DetectUrls = false;
             this.txtCompressOutputFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtCompressOutputFolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtCompressOutputFolder.Location = new System.Drawing.Point(801, 83);
-            this.txtCompressOutputFolder.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
+            this.txtCompressOutputFolder.Location = new System.Drawing.Point(799, 83);
             this.txtCompressOutputFolder.Name = "txtCompressOutputFolder";
-            this.txtCompressOutputFolder.Size = new System.Drawing.Size(438, 74);
+            this.txtCompressOutputFolder.Size = new System.Drawing.Size(442, 74);
             this.txtCompressOutputFolder.TabIndex = 7;
             this.txtCompressOutputFolder.Text = "";
             // 
@@ -583,6 +585,8 @@ namespace Video_Tools
             // 
             this.btnCompressOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCompressOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCompressOutput.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btnCompressOutput.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCompressOutput.Location = new System.Drawing.Point(799, 3);
             this.btnCompressOutput.Name = "btnCompressOutput";
             this.btnCompressOutput.Size = new System.Drawing.Size(442, 74);
@@ -595,6 +599,8 @@ namespace Video_Tools
             // 
             this.btnCompressInputFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCompressInputFolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCompressInputFolder.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btnCompressInputFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCompressInputFolder.Location = new System.Drawing.Point(401, 3);
             this.btnCompressInputFolder.Name = "btnCompressInputFolder";
             this.btnCompressInputFolder.Size = new System.Drawing.Size(392, 74);
@@ -607,6 +613,8 @@ namespace Video_Tools
             // 
             this.btnCompressInputFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCompressInputFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCompressInputFiles.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btnCompressInputFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCompressInputFiles.Location = new System.Drawing.Point(3, 3);
             this.btnCompressInputFiles.Name = "btnCompressInputFiles";
             this.btnCompressInputFiles.Size = new System.Drawing.Size(392, 74);
@@ -649,6 +657,7 @@ namespace Video_Tools
             this.gbCompressCompression.TabIndex = 2;
             this.gbCompressCompression.TabStop = false;
             this.gbCompressCompression.Text = "Compression";
+            this.toolTip.SetToolTip(this.gbCompressCompression, "Low compression means better quality, but larger file sizes");
             // 
             // txtCompressCustomCrf
             // 
@@ -736,13 +745,14 @@ namespace Video_Tools
             this.gbCompressSpeed.Controls.Add(this.rbtnCompressUltraFast);
             this.gbCompressSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbCompressSpeed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbCompressSpeed.Location = new System.Drawing.Point(8, 3);
-            this.gbCompressSpeed.Margin = new System.Windows.Forms.Padding(8, 3, 3, 3);
+            this.gbCompressSpeed.Location = new System.Drawing.Point(6, 3);
+            this.gbCompressSpeed.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
             this.gbCompressSpeed.Name = "gbCompressSpeed";
-            this.gbCompressSpeed.Size = new System.Drawing.Size(539, 94);
+            this.gbCompressSpeed.Size = new System.Drawing.Size(541, 94);
             this.gbCompressSpeed.TabIndex = 0;
             this.gbCompressSpeed.TabStop = false;
             this.gbCompressSpeed.Text = "Speed";
+            this.toolTip.SetToolTip(this.gbCompressSpeed, "Slow compression speed means better quality for the same file size");
             // 
             // rbtnCompressVerySlow
             // 
@@ -846,12 +856,13 @@ namespace Video_Tools
             this.gbCompressResolution.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbCompressResolution.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.gbCompressResolution.Location = new System.Drawing.Point(940, 3);
-            this.gbCompressResolution.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
+            this.gbCompressResolution.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
             this.gbCompressResolution.Name = "gbCompressResolution";
-            this.gbCompressResolution.Size = new System.Drawing.Size(302, 94);
+            this.gbCompressResolution.Size = new System.Drawing.Size(304, 94);
             this.gbCompressResolution.TabIndex = 1;
             this.gbCompressResolution.TabStop = false;
             this.gbCompressResolution.Text = "Resolution";
+            this.toolTip.SetToolTip(this.gbCompressResolution, "Resolution of the output file if the \"Change Resolution\" option is selected");
             // 
             // txtCompressCustomRes
             // 
@@ -968,6 +979,8 @@ namespace Video_Tools
             // 
             this.btnCompress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCompress.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCompress.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btnCompress.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCompress.Location = new System.Drawing.Point(3, 2);
             this.btnCompress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
             this.btnCompress.Name = "btnCompress";
@@ -1039,7 +1052,7 @@ namespace Video_Tools
             this.lblCompressPercentFiles.Name = "lblCompressPercentFiles";
             this.lblCompressPercentFiles.Size = new System.Drawing.Size(86, 34);
             this.lblCompressPercentFiles.TabIndex = 1;
-            this.lblCompressPercentFiles.Text = "0 %";
+            this.lblCompressPercentFiles.Text = "0%";
             this.lblCompressPercentFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tblCompressOther
@@ -1068,13 +1081,13 @@ namespace Video_Tools
             this.gbCompressMode.Controls.Add(this.chkCompressModeVideo);
             this.gbCompressMode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbCompressMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbCompressMode.Location = new System.Drawing.Point(795, 3);
-            this.gbCompressMode.Margin = new System.Windows.Forms.Padding(8, 3, 3, 3);
+            this.gbCompressMode.Location = new System.Drawing.Point(790, 3);
             this.gbCompressMode.Name = "gbCompressMode";
-            this.gbCompressMode.Size = new System.Drawing.Size(189, 94);
+            this.gbCompressMode.Size = new System.Drawing.Size(194, 94);
             this.gbCompressMode.TabIndex = 13;
             this.gbCompressMode.TabStop = false;
             this.gbCompressMode.Text = "Mode";
+            this.toolTip.SetToolTip(this.gbCompressMode, "Type of the files to compress");
             // 
             // chkCompressModeJpg
             // 
@@ -1126,10 +1139,12 @@ namespace Video_Tools
             // 
             this.btnCompressResetSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnCompressResetSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCompressResetSettings.Location = new System.Drawing.Point(992, 11);
-            this.btnCompressResetSettings.Margin = new System.Windows.Forms.Padding(5, 11, 8, 3);
+            this.btnCompressResetSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btnCompressResetSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompressResetSettings.Location = new System.Drawing.Point(990, 12);
+            this.btnCompressResetSettings.Margin = new System.Windows.Forms.Padding(3, 12, 6, 4);
             this.btnCompressResetSettings.Name = "btnCompressResetSettings";
-            this.btnCompressResetSettings.Size = new System.Drawing.Size(250, 86);
+            this.btnCompressResetSettings.Size = new System.Drawing.Size(254, 84);
             this.btnCompressResetSettings.TabIndex = 12;
             this.btnCompressResetSettings.Text = "Reset Settings";
             this.btnCompressResetSettings.UseVisualStyleBackColor = false;
@@ -1147,10 +1162,10 @@ namespace Video_Tools
             this.gbCompressOther.Controls.Add(this.chkCompressSubFolders);
             this.gbCompressOther.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbCompressOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.gbCompressOther.Location = new System.Drawing.Point(8, 3);
-            this.gbCompressOther.Margin = new System.Windows.Forms.Padding(8, 3, 3, 3);
+            this.gbCompressOther.Location = new System.Drawing.Point(6, 3);
+            this.gbCompressOther.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
             this.gbCompressOther.Name = "gbCompressOther";
-            this.gbCompressOther.Size = new System.Drawing.Size(776, 94);
+            this.gbCompressOther.Size = new System.Drawing.Size(778, 94);
             this.gbCompressOther.TabIndex = 11;
             this.gbCompressOther.TabStop = false;
             this.gbCompressOther.Text = "Other";
@@ -1166,7 +1181,7 @@ namespace Video_Tools
             this.chkCompressChangeRes.Size = new System.Drawing.Size(181, 23);
             this.chkCompressChangeRes.TabIndex = 14;
             this.chkCompressChangeRes.Text = "Change Resolution";
-            this.toolTip.SetToolTip(this.chkCompressChangeRes, "Scales the video to the selected resolution");
+            this.toolTip.SetToolTip(this.chkCompressChangeRes, "Scale the video to the selected resolution");
             this.chkCompressChangeRes.UseVisualStyleBackColor = true;
             this.chkCompressChangeRes.CheckedChanged += new System.EventHandler(this.chkCompressChangeRes_CheckedChanged);
             // 
@@ -1181,6 +1196,7 @@ namespace Video_Tools
             this.chkCompressGenerateReport.Size = new System.Drawing.Size(163, 23);
             this.chkCompressGenerateReport.TabIndex = 13;
             this.chkCompressGenerateReport.Text = "Generate Report";
+            this.toolTip.SetToolTip(this.chkCompressGenerateReport, "Generate a compression report");
             this.chkCompressGenerateReport.UseVisualStyleBackColor = true;
             // 
             // chkCompressRevertBigger
@@ -1194,6 +1210,7 @@ namespace Video_Tools
             this.chkCompressRevertBigger.Size = new System.Drawing.Size(217, 23);
             this.chkCompressRevertBigger.TabIndex = 12;
             this.chkCompressRevertBigger.Text = "Revert Bigger Outputs";
+            this.toolTip.SetToolTip(this.chkCompressRevertBigger, "Replace output files by their input if the input is smaller");
             this.chkCompressRevertBigger.UseVisualStyleBackColor = true;
             // 
             // chkCompressOutputTree
@@ -1207,7 +1224,7 @@ namespace Video_Tools
             this.chkCompressOutputTree.Size = new System.Drawing.Size(181, 23);
             this.chkCompressOutputTree.TabIndex = 11;
             this.chkCompressOutputTree.Text = "Recreate Dir Tree";
-            this.toolTip.SetToolTip(this.chkCompressOutputTree, "Recreates the directory tree of the input files in the output folder");
+            this.toolTip.SetToolTip(this.chkCompressOutputTree, "Recreate the directory tree of the input files in the output folder");
             this.chkCompressOutputTree.UseVisualStyleBackColor = true;
             this.chkCompressOutputTree.CheckedChanged += new System.EventHandler(this.chkCompressOutputTree_CheckedChanged);
             // 
@@ -1220,6 +1237,7 @@ namespace Video_Tools
             this.chkCompressAudio.Size = new System.Drawing.Size(154, 23);
             this.chkCompressAudio.TabIndex = 10;
             this.chkCompressAudio.Text = "Compress Audio";
+            this.toolTip.SetToolTip(this.chkCompressAudio, "Compress the audio instead of copying the original");
             this.chkCompressAudio.UseVisualStyleBackColor = true;
             this.chkCompressAudio.CheckedChanged += new System.EventHandler(this.chkCompressAudio_CheckedChanged);
             // 
@@ -1246,8 +1264,8 @@ namespace Video_Tools
             this.chkCompressCmdAutoExit.Name = "chkCompressCmdAutoExit";
             this.chkCompressCmdAutoExit.Size = new System.Drawing.Size(145, 23);
             this.chkCompressCmdAutoExit.TabIndex = 8;
-            this.chkCompressCmdAutoExit.Text = "Cmd Auto Exit";
-            this.toolTip.SetToolTip(this.chkCompressCmdAutoExit, "Automatically exit command console after it finished");
+            this.chkCompressCmdAutoExit.Text = "Auto Exit CMD";
+            this.toolTip.SetToolTip(this.chkCompressCmdAutoExit, "Close command prompts after their files are compressed");
             this.chkCompressCmdAutoExit.UseVisualStyleBackColor = true;
             // 
             // chkCompressSubFolders

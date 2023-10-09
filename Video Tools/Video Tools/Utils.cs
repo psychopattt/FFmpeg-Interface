@@ -385,7 +385,7 @@ namespace Video_Tools
             {
                 progressBar.Value++;
                 lblNbCompressed.Text = progressBar.Value + lblNbCompressed.Text.Remove(0, lblNbCompressed.Text.IndexOf(" "));
-                lblPercentCompressed.Text = Math.Floor((double)progressBar.Value / progressBar.Maximum * 100) + " %";
+                lblPercentCompressed.Text = Math.Floor((double)progressBar.Value / progressBar.Maximum * 100) + "%";
             });
         }
 
