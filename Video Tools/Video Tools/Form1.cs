@@ -27,6 +27,7 @@ namespace Video_Tools
             chkCompressOutputTree.Checked = false;
             Utils.compressButton = btnCompress;
             Utils.lblNbCompressed = lblCompressNbFiles;
+            Utils.lblProgressFile = lblCompressProgressFile;
             Utils.lblPercentCompressed = lblCompressPercentFiles;
             Utils.progressBar = progressBar;
             Utils.chrono = chrono;
@@ -533,6 +534,7 @@ namespace Video_Tools
         {
             lblCompressNbFiles.Text = "0 / " + nbFiles + " files";
             lblCompressProgressTimer.Text = "0:00:00:00";
+            lblCompressProgressFile.Text = string.Empty;
             lblCompressPercentFiles.Text = "0%";
             progressBar.Value = 0;
             progressBar.Maximum = nbFiles;

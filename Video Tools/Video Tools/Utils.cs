@@ -20,6 +20,7 @@ namespace Video_Tools
         public static byte compressMode = 0;
         public static Button compressButton;
         public static Label lblNbCompressed;
+        public static Label lblProgressFile;
         public static Label lblPercentCompressed;
         public static ProgressBar progressBar;
         public static Stopwatch chrono;
@@ -121,6 +122,9 @@ namespace Video_Tools
                         process.StartInfo = processInfo;
                         process.Start();
 
+                        if (currentTab == 1)
+                            UpdateCurrentFile(Path.GetFileName(output.Replace("\"", "")));
+
                         if (!simultaneousLaunch)
                         {
                             process.WaitForExit();
@@ -202,6 +206,7 @@ namespace Video_Tools
                             }
 
                             StopTimer();
+                            UpdateCurrentFile("");
                             EnableCompressButton(true);
                             break;
                     }
@@ -376,6 +381,13 @@ namespace Video_Tools
             compressButton.BeginInvoke((Action)delegate ()
             {
                 compressButton.Enabled = state;
+            });
+        }
+
+        private static void UpdateCurrentFile(string currentFile)
+        {
+            lblProgressFile.BeginInvoke((Action)delegate () {
+                lblProgressFile.Text = currentFile;
             });
         }
 
