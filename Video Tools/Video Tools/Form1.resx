@@ -121,43 +121,52 @@
     <value>
  Controls during playback
 
- Q or ESC : Quit.
+ Q or ESC: Quit.
 
- F : Toggle full screen.
+ F: Toggle full screen.
 
- P or SPC : Pause.
+ P or Space: Pause.
 
- M : Toggle mute.
+ M: Toggle mute.
 
- 9, 0 : Decrease and increase volume respectively.
+ 9, 0: Decrease and increase volume respectively.
 
- /, * : Decrease and increase volume respectively.
+ /, *: Decrease and increase volume respectively.
 
- A : Cycle audio channel in the current program.
+ A: Cycle audio channel in the current program.
 
- V : Cycle video channel.
+ V: Cycle video channel.
 
- T : Cycle subtitle channel in the current program.
+ T: Cycle subtitle channel in the current program.
 
- C : Cycle program.
+ C: Cycle program.
 
- W : Cycle video filters or show modes.
+ W: Cycle video filters or show modes.
 
- S : Step to the next frame.
+ S: Step to the next frame.
 
- Left / right : Seek backward/forward 10 seconds.
+ Left / right: Seek backward/forward 10 seconds.
 
- Down / up : Seek backward/forward 1 minute.
+ Down / up: Seek backward/forward 1 minute.
 
- Page down / page up : Seek to the previous/next chapter.
+ Page down / page up: Seek to the previous/next chapter.
  If there are no chapters Seek backward/forward 10 minutes.
 
- Right mouse click : Seek to percentage in file 
+ Right mouse click: Seek to percentage in file 
  corresponding to fraction of width.
 
- Left mouse double-click : Toggle full screen.
+ Left mouse double-click: Toggle full screen.
 </value>
   </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

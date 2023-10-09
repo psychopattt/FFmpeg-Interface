@@ -211,12 +211,12 @@ namespace Video_Tools
             // 
             this.txtPlayFilePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.txtPlayFilePath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPlayFilePath.DetectUrls = false;
             this.txtPlayFilePath.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPlayFilePath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtPlayFilePath.Location = new System.Drawing.Point(9, 90);
-            this.txtPlayFilePath.Margin = new System.Windows.Forms.Padding(8);
+            this.txtPlayFilePath.Location = new System.Drawing.Point(4, 85);
             this.txtPlayFilePath.Name = "txtPlayFilePath";
-            this.txtPlayFilePath.Size = new System.Drawing.Size(652, 175);
+            this.txtPlayFilePath.Size = new System.Drawing.Size(662, 185);
             this.txtPlayFilePath.TabIndex = 3;
             this.txtPlayFilePath.Text = "";
             // 
@@ -224,12 +224,12 @@ namespace Video_Tools
             // 
             this.txtPlayCommand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.txtPlayCommand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPlayCommand.DetectUrls = false;
             this.txtPlayCommand.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtPlayCommand.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtPlayCommand.Location = new System.Drawing.Point(9, 423);
-            this.txtPlayCommand.Margin = new System.Windows.Forms.Padding(8);
+            this.txtPlayCommand.Location = new System.Drawing.Point(4, 418);
             this.txtPlayCommand.Name = "txtPlayCommand";
-            this.txtPlayCommand.Size = new System.Drawing.Size(652, 104);
+            this.txtPlayCommand.Size = new System.Drawing.Size(662, 114);
             this.txtPlayCommand.TabIndex = 13;
             this.txtPlayCommand.Text = "ffplay -i \"input\" -hide_banner";
             // 
@@ -259,7 +259,7 @@ namespace Video_Tools
             this.chkPlaySimultaneousLaunch.Size = new System.Drawing.Size(199, 23);
             this.chkPlaySimultaneousLaunch.TabIndex = 12;
             this.chkPlaySimultaneousLaunch.Text = "Simultaneous Launch";
-            this.toolTip.SetToolTip(this.chkPlaySimultaneousLaunch, "Launches all videos at the same time");
+            this.toolTip.SetToolTip(this.chkPlaySimultaneousLaunch, "Open all files at the same time");
             this.chkPlaySimultaneousLaunch.UseVisualStyleBackColor = true;
             // 
             // chkPlaySearchSubfolders
@@ -308,8 +308,8 @@ namespace Video_Tools
             this.chkPlayVideoAutoExit.Name = "chkPlayVideoAutoExit";
             this.chkPlayVideoAutoExit.Size = new System.Drawing.Size(163, 23);
             this.chkPlayVideoAutoExit.TabIndex = 5;
-            this.chkPlayVideoAutoExit.Text = "Video Auto Exit";
-            this.toolTip.SetToolTip(this.chkPlayVideoAutoExit, "Exit video as soon as it ends");
+            this.chkPlayVideoAutoExit.Text = "Auto Exit Files";
+            this.toolTip.SetToolTip(this.chkPlayVideoAutoExit, "Exit files as soon as they are done playing");
             this.chkPlayVideoAutoExit.UseVisualStyleBackColor = true;
             this.chkPlayVideoAutoExit.CheckedChanged += new System.EventHandler(this.chkPlayVideoAutoExit_CheckedChanged);
             // 
@@ -359,8 +359,8 @@ namespace Video_Tools
             this.chkPlayCmdAutoExit.Name = "chkPlayCmdAutoExit";
             this.chkPlayCmdAutoExit.Size = new System.Drawing.Size(145, 23);
             this.chkPlayCmdAutoExit.TabIndex = 4;
-            this.chkPlayCmdAutoExit.Text = "Cmd Auto Exit";
-            this.toolTip.SetToolTip(this.chkPlayCmdAutoExit, "Automatically exit command console after it finished");
+            this.chkPlayCmdAutoExit.Text = "Auto Exit CMD";
+            this.toolTip.SetToolTip(this.chkPlayCmdAutoExit, "Close command prompts when their files are closed");
             this.chkPlayCmdAutoExit.UseVisualStyleBackColor = true;
             // 
             // tblPlaySelectVideos
@@ -382,6 +382,8 @@ namespace Video_Tools
             // 
             this.btnPlaySelectFolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnPlaySelectFolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPlaySelectFolder.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btnPlaySelectFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlaySelectFolder.Location = new System.Drawing.Point(334, 3);
             this.btnPlaySelectFolder.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
             this.btnPlaySelectFolder.Name = "btnPlaySelectFolder";
@@ -395,6 +397,8 @@ namespace Video_Tools
             // 
             this.btnPlaySelectVideos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnPlaySelectVideos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPlaySelectVideos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btnPlaySelectVideos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlaySelectVideos.Location = new System.Drawing.Point(3, 3);
             this.btnPlaySelectVideos.Margin = new System.Windows.Forms.Padding(3, 3, 3, 8);
             this.btnPlaySelectVideos.Name = "btnPlaySelectVideos";
@@ -417,12 +421,14 @@ namespace Video_Tools
             this.tblPlayReset.RowCount = 1;
             this.tblPlayReset.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblPlayReset.Size = new System.Drawing.Size(662, 94);
-            this.tblPlayReset.TabIndex = 10;
+            this.tblPlayReset.TabIndex = 14;
             // 
             // btnPlayReset
             // 
             this.btnPlayReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnPlayReset.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPlayReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btnPlayReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlayReset.Location = new System.Drawing.Point(466, 3);
             this.btnPlayReset.Name = "btnPlayReset";
             this.btnPlayReset.Size = new System.Drawing.Size(193, 88);
@@ -435,6 +441,8 @@ namespace Video_Tools
             // 
             this.btnPlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnPlay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPlay.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.btnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlay.Location = new System.Drawing.Point(3, 3);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(457, 88);
@@ -975,7 +983,7 @@ namespace Video_Tools
             this.tblCompressCompletionStatus.ColumnCount = 3;
             this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
+            this.tblCompressCompletionStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tblCompressCompletionStatus.Controls.Add(this.lblCompressProgressTimer, 1, 0);
             this.tblCompressCompletionStatus.Controls.Add(this.lblCompressNbFiles, 0, 0);
             this.tblCompressCompletionStatus.Controls.Add(this.progressBar, 0, 1);
@@ -993,7 +1001,7 @@ namespace Video_Tools
             // 
             this.lblCompressProgressTimer.AutoSize = true;
             this.lblCompressProgressTimer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCompressProgressTimer.Location = new System.Drawing.Point(718, 1);
+            this.lblCompressProgressTimer.Location = new System.Drawing.Point(717, 1);
             this.lblCompressProgressTimer.Name = "lblCompressProgressTimer";
             this.lblCompressProgressTimer.Size = new System.Drawing.Size(124, 34);
             this.lblCompressProgressTimer.TabIndex = 3;
@@ -1006,7 +1014,7 @@ namespace Video_Tools
             this.lblCompressNbFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCompressNbFiles.Location = new System.Drawing.Point(4, 1);
             this.lblCompressNbFiles.Name = "lblCompressNbFiles";
-            this.lblCompressNbFiles.Size = new System.Drawing.Size(707, 34);
+            this.lblCompressNbFiles.Size = new System.Drawing.Size(706, 34);
             this.lblCompressNbFiles.TabIndex = 0;
             this.lblCompressNbFiles.Text = "0 / 0 files";
             this.lblCompressNbFiles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1027,9 +1035,9 @@ namespace Video_Tools
             // 
             this.lblCompressPercentFiles.AutoSize = true;
             this.lblCompressPercentFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCompressPercentFiles.Location = new System.Drawing.Point(849, 1);
+            this.lblCompressPercentFiles.Location = new System.Drawing.Point(848, 1);
             this.lblCompressPercentFiles.Name = "lblCompressPercentFiles";
-            this.lblCompressPercentFiles.Size = new System.Drawing.Size(85, 34);
+            this.lblCompressPercentFiles.Size = new System.Drawing.Size(86, 34);
             this.lblCompressPercentFiles.TabIndex = 1;
             this.lblCompressPercentFiles.Text = "0 %";
             this.lblCompressPercentFiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1280,9 +1288,8 @@ namespace Video_Tools
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "frmVideoTools";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Video Tools 1.0.1";
+            this.Text = "Video Tools 1.0.2";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
             this.Resize += new System.EventHandler(this.frmVideoTools_Resize);

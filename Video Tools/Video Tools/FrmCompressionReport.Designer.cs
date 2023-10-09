@@ -87,7 +87,7 @@ namespace Video_Tools
             this.btnReportClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.btnReportClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnReportClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnReportClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnReportClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btnReportClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReportClose.Location = new System.Drawing.Point(4, 583);
             this.btnReportClose.Name = "btnReportClose";
