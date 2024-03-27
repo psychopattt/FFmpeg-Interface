@@ -43,10 +43,14 @@ namespace Video_Tools
             return foundExecutables.Length > 0 ? foundExecutables[0] : null;
         }
 
-        public static void LaunchProcess(string arguments, string[] inputPaths, bool autoExit, bool simultaneousLaunch)
+        public static void LaunchProcess(string arguments, string[] inputPaths,
+            bool autoExit, bool simultaneousLaunch, bool shuffleFiles)
         {
             if (inputPaths.Length == 0 || arguments.Length == 0)
                 return;
+
+            if (shuffleFiles)
+                Shuffle(inputPaths);
 
             EnablePlayButton(false);
             LaunchProcess(0, GetExecutablePath("ffplay"), arguments, inputPaths, " ", autoExit, false,
@@ -439,6 +443,18 @@ namespace Video_Tools
 
                 compressionReport.Show(Application.OpenForms[0]);
             });
+        }
+
+        private static void Shuffle<T>(T[] values)
+        {
+            Random random = new Random();
+            int currentIndex = values.Length;
+
+            while (currentIndex > 1)
+            {
+                int newIndex = random.Next(currentIndex--);
+                (values[newIndex], values[currentIndex]) = (values[currentIndex], values[newIndex]);
+            }
         }
 
         #endregion

@@ -153,7 +153,8 @@ namespace Video_Tools
             if (!ExecutableInstalled("ffplay") || !ValidatePlayParameters())
                 return;
 
-            Utils.LaunchProcess(txtPlayCommand.Text, txtPlayFilePath.Lines, chkPlayCmdAutoExit.Checked, chkPlaySimultaneousLaunch.Checked);
+            Utils.LaunchProcess(txtPlayCommand.Text, txtPlayFilePath.Lines, chkPlayCmdAutoExit.Checked,
+                chkPlaySimultaneousLaunch.Checked, chkPlayShuffle.Checked);
         }
 
         private void chkPlayStartFullscreen_CheckedChanged(object sender, EventArgs e)

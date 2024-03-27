@@ -123,7 +123,7 @@
 
  Q or ESC: Quit.
 
- F: Toggle full screen.
+ F: Toggle fullscreen.
 
  P or Space: Pause.
 
@@ -155,12 +155,9 @@
  Right mouse click: Seek to percentage in file 
  corresponding to fraction of width.
 
- Left mouse double-click: Toggle full screen.
+ Left mouse double-click: Toggle fullscreen.
 </value>
   </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
